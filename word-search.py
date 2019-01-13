@@ -60,58 +60,59 @@ def checkFirst(grid, word):
 
 
 def checkSecond(grid, word, pos):
+    xy = pos.copy()
     try:
         if grid[pos[0] - 1][pos[1]] == word[1] and directionSearch(grid, pos, "N", word):
-            print(word, pos, "N")
+            print(word, xy, "N")
         else:
             pass 
     except:
         pass
     try:
         if grid[pos[0] - 1][pos[1] + 1] == word[1] and directionSearch(grid, pos, "NE", word):
-            print(word, pos, "NE")
+            print(word, xy, "NE")
         else:
             pass
     except:
         pass
     try:
         if grid[pos[0]][pos[1] + 1] == word[1] and directionSearch(grid, pos, "E", word):
-            print(word, pos, "E")
+            print(word, xy, "E")
         else:
             pass
     except:
         pass
     try:
         if grid[pos[0] + 1][pos[1] + 1] == word[1] and directionSearch(grid, pos, "SE", word):
-            print(word, pos, "SE")
+            print(word, xy, "SE")
         else:
             pass
     except:
         pass
     try:
         if grid[pos[0] + 1][pos[1]] == word[1] and directionSearch(grid, pos, "S", word):
-            print(word, pos, "S")
+            print(word, xy, "S")
         else:
             pass
     except:
         pass
     try:
         if grid[pos[0] + 1][pos[1] - 1] == word[1] and directionSearch(grid, pos, "SW", word):
-            print(word, pos, "SW")
+            print(word, xy, "SW")
         else:
             pass
     except:
         pass
     try:
         if grid[pos[0]][pos[1] - 1] == word[1] and directionSearch(grid, pos, "W", word):
-            print(word, pos, "W")
+            print(word, xy, "W")
         else:
             pass
     except:
         pass
     try:
         if grid[pos[0] - 1][pos[1] - 1] == word[1] and directionSearch(grid, pos, "NW", word):
-            print(word, pos, "NW")
+            print(word, xy, "NW")
         else:
             pass
     except:
