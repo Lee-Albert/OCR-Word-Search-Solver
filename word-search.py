@@ -1,5 +1,8 @@
+from tkinter import *
 from PIL import Image
 import pytesseract
+
+root = Tk()
 
 #resizes the wordsearch and turns into text
 def translate(image):
@@ -319,14 +322,13 @@ wordBankArray = translate("test-data/test-bank3.png")
 wordSearch = toGrid(list(wordSearchArray))
 wordBank = toBank(list(wordBankArray))
 
-print(wordBank)
-print(wordSearch)
+
+highlight = []
 
 for word in wordBank:
-    checkFirst(wordSearch, word)
+        letter = Label(text = wordSearch[i][j], font=("Ariel", 44)).grid(column = j, row = i)
 
-
-
+root.mainloop()
 
 
 
