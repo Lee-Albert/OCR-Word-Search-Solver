@@ -27,21 +27,27 @@ def toGrid(array):
     return grid
 
 def toBank(array):
-    rowLength = array.index('\n')
     grid = []
-
-    grid.append(array[:rowLength])
-    array = array[rowLength:]
-
+    
+    length = array.index('\n')
+    grid.append(array[:length])
+    array = array[length:]
+    
     while array:
         array = array[1:]
-        grid.append(array[:rowLength])
-        array = array[rowLength:]
-
+        try:
+            length = array.index('\n')
+            grid.append(array[:length])
+            array = array[length:]
+        except:
+            grid.append(array[0:])
+            array = []
+    
     bank = []
+
     for word in grid:
         bank.append(''.join(word))
-    
+
     return bank
   
 def checkFirst(grid, word):
@@ -291,12 +297,15 @@ def directionSearch(array, position, direction, word):
     elif direction == "NW":
         return nwDirection(array, position, word)
 
-wordsearch = translate("test-image.png")
-wordbank = translate("test-bank.png")
-print(toGrid(list(wordsearch)))
-print(wordbank)
-print(list(wordbank))
-print(toBank(list(wordbank)))
+wordSearchArray = translate("test-image.png")
+wordBankArray = translate("test-bank.png")
+
+wordSearch = toGrid(list(wordBankArray))
+wordBank = toBank(list(wordBankArray))
+
+for word in wordBank:
+    checkFirst(wordSearch, word)
+
 
 
 
