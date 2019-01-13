@@ -3,7 +3,7 @@ import string
 import sys
 
 orig_stdout = sys.stdout
-f = open('wordsearch.txt', 'w')
+f = open('wordsearch.txt', 'w') 
 sys.stdout = f
 
 grid_size = random.randint(10, 20)
