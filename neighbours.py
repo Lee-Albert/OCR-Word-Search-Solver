@@ -1,7 +1,3 @@
-array1 = [["J", "S", "O", "L", "U", "T", "I", "S"], ["S", "U", "N", "A", "R", "U", "U", "A"], ["N", "E", "P", "T", "U", "N", "E", "T"], ["S", "O", "N", "I", "E", "I", "S", "U"], ["R", "C", "E", "V", "T", "R", "E", "R"], ["A", "H", "T", "R", "A", "E", "S", "N"], ["M", "M", "E", "R", "C", "U", "R", "Y"]]
-words = ["EARTH", "JUPITER", "MARS", "MERCURY", "NEPTUNE", "SATURN", "URANUS", "VENUS"]
-
-
 def checkFirst(grid, word):
     for i in range(0, len(grid)):
         for j in range(0, len(grid[0])):
@@ -68,12 +64,3 @@ def checkSecond(grid, word, pos):
             continue
     except:
         pass
-
-    
-
-
-
-
-checkFirst(array1, words[0]) 
-
-directionSearch()
