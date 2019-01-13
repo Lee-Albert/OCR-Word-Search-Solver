@@ -76,7 +76,7 @@ def highlightpos(wordlen, pos, direction):
 
 def checkFirst(grid, word):
     for i in range(0, len(grid)):
-        for j in range(0, len(grid[0])):
+        for j in range(0, len(grid[i])):
             try:
                 if grid[i][j] == word[0]:
                     pos = [i, j]
@@ -358,7 +358,7 @@ print(highlight)
 print(wordSearch)
 
 for i in range(0, len(wordSearch)):
-    for j in range(0, len(wordSearch[0])):
+    for j in range(0, len(wordSearch[i])):
         letter = Label(text = wordSearch[i][j], font=("Ariel", 44)).grid(column = j, row = i)
 
 for q in range(0, len(highlight)):
