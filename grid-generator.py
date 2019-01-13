@@ -6,31 +6,75 @@ orig_stdout = sys.stdout
 f = open('wordsearch.txt', 'w')
 sys.stdout = f
 
-width = 10
-height = 10
+grid_size = random.randint(10, 20)
+grid = [['_' for _ in range(grid_size)] for _ in range(grid_size)]
 
-def insert_word(word, grid):
+def print_grid():
+    for size in range(grid_size):
+        print('\t'*2 + ' '.join(grid[size]))
 
-    word = random.choice([word,word[::-1]]) # Random order of String
-    dir = random.choice([[1,0], [0,1], [1,1]]) # Random choice of Direction
-
-    x_width = width if dir[0] == 0 else width - len(word)
-    y_height = height if dir[1] == 0 else height - len(word)
-
-    x = random.randrange(0, x_width)
-    y = random.randrange(0, y_height)
-
-    for i in range(0, len(word)):
-        grid[y + dir[1]*i][x + dir[0]*i] = word[i]
-    return grid
-
-grid = [[random.choice(string.uppercase) for i in range(0, 10)] for i in range(0, 10)]
+orientations = ['horizontal', 'vertical', 'diagonalup', 'diagonaldown']
 
 f = open('wordbank.txt')
 for word in f.read().split():
-    grid = insert_word(word, grid)
+    word_length = len(word)
 
-print "\n".join(map(lambda row: " ".join(row), grid))
+    placed = False
+    while not placed:
+        orientation = random.choice(orientations)
+
+        if orientation == 'horizontal':
+            step_x = 1
+            step_y = 0
+        if orientation == 'vertical':
+            step_x = 0
+            step_y = 1
+        if orientation == 'diagonalup':
+            step_x = 1
+            step_y = 1
+        if orientation == 'diagonaldown':
+            step_x = 1
+            step_y = -1
+
+        x_position = random.randint(0,grid_size - 1)
+        y_position = random.randint(0,grid_size - 1)
+
+        ending_x = x_position + word_length * step_x
+        ending_y = y_position + word_length * step_y
+
+        if ending_x < 0 or ending_x >= grid_size: continue
+        if ending_y < 0 or ending_y >= grid_size: continue
+
+        failed = False
+
+        for i in range(word_length):
+            character = word[i]
+
+            new_position_x = x_position + i * step_x
+            new_position_y = y_position + i * step_y
+
+            chcarcter_new_pos = grid[new_position_x][new_position_y]
+            if chcarcter_new_pos != '_':
+                if chcarcter_new_pos == character:
+                    continue
+                else:
+                    failed = True
+                    break
+        if failed:
+            continue
+        else:
+            for i in range(word_length):
+                new_position_x = x_position + i * step_x
+                new_position_y = y_position + i * step_y
+                grid[new_position_x][new_position_y] = word[i]
+            placed = True
+
+for x in range(grid_size):
+    for y in range(grid_size):
+        if grid[x][y] == '_':
+            grid[x][y] = random.choice(string.uppercase)
+
+print_grid()
 
 sys.stdout = orig_stdout
 f.close()
