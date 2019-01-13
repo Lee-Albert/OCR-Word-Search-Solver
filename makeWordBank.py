@@ -1,4 +1,6 @@
-def toGrid(array):
+test = ['h','e','l','l','o','\n','w','o','r','l','d']
+
+def toBank(array):
     rowLength = array.index('\n')
     grid = []
 
@@ -9,5 +11,11 @@ def toGrid(array):
         array = array[1:]
         grid.append(array[:rowLength])
         array = array[rowLength:]
-        
-    return grid
+
+    bank = []
+    for word in grid:
+        bank.append(''.join(word))
+    
+    return bank
+
+print(toBank(test))   

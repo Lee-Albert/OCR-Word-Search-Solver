@@ -13,7 +13,6 @@ def translate(image):
     return text
 
 wordsearch = translate("test1.png")
-print(wordsearch)
 array = list(wordsearch)
 
 
