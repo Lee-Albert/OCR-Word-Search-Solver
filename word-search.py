@@ -326,6 +326,10 @@ wordBank = toBank(list(wordBankArray))
 highlight = []
 
 for word in wordBank:
+    checkFirst(wordSearch, word)
+
+for i in range(0, len(wordSearch)):
+    for j in range(0, len(wordSearch[0])):
         letter = Label(text = wordSearch[i][j], font=("Ariel", 44)).grid(column = j, row = i)
 
 root.mainloop()
