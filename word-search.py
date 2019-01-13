@@ -293,7 +293,10 @@ def directionSearch(array, position, direction, word):
 
 wordsearch = translate("test-image.png")
 wordbank = translate("test-bank.png")
-
 print(toGrid(list(wordsearch)))
+print(wordbank)
+print(list(wordbank))
 print(toBank(list(wordbank)))
+
+
 
