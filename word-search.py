@@ -16,4 +16,3 @@ wordsearch = translate("test1.png")
 print(wordsearch)
 array = list(wordsearch)
 
-#def toArray(text):
