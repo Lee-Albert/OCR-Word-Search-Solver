@@ -6,12 +6,12 @@ orig_stdout = sys.stdout
 f = open('wordsearch.txt', 'w') 
 sys.stdout = f
 
-grid_size = random.randint(10, 20)
+grid_size = 9
 grid = [['_' for _ in range(grid_size)] for _ in range(grid_size)]
 
 def print_grid():
     for size in range(grid_size):
-        print('\t'*2 + ' '.join(grid[size]))
+        print('\t'*2 + ''.join(grid[size]))
 
 orientations = ['horizontal', 'vertical', 'diagonalup', 'diagonaldown']
 
@@ -72,7 +72,7 @@ for word in f.read().split():
 for x in range(grid_size):
     for y in range(grid_size):
         if grid[x][y] == '_':
-            grid[x][y] = random.choice(string.uppercase)
+            grid[x][y] = random.choice(string.ascii_uppercase)
 
 print_grid()
 

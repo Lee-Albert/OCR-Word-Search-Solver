@@ -7,7 +7,7 @@ root = Tk()
 #resizes the wordsearch and turns into text
 def translate(image):
     im = Image.open(image)
-    basewidth = 1000
+    basewidth = 2200
     wpercent = (basewidth/float(im.size[0]))
     hsize = int((float(im.size[1])*float(wpercent)))
     im = im.resize((basewidth,hsize), Image.ANTIALIAS)
@@ -326,27 +326,28 @@ def nwDirection(array, position, word):
                 return True
 
 def directionSearch(array, position, direction, word):
+    temppos = position.copy()
     if direction == "N":
-        return nDirection(array, position, word)
+        return nDirection(array, temppos, word)
     elif direction == "NE":
-        return neDirection(array, position, word)
+        return neDirection(array, temppos, word)
     elif direction == "E":
-        return eDirection(array, position, word)
+        return eDirection(array, temppos, word)
     elif direction == "SE":
-        return seDirection(array, position, word)
+        return seDirection(array, temppos, word)
     elif direction == "S":
-        return sDirection(array, position, word)
+        return sDirection(array, temppos, word)
     elif direction == "SW":
-        return swDirection(array, position, word)
+        return swDirection(array, temppos, word)
     elif direction == "W":
-        return wDirection(array, position, word)
+        return wDirection(array, temppos, word)
     elif direction == "NW":
-        return nwDirection(array, position, word)
+        return nwDirection(array, temppos, word)
 
-wordSearchArray = translate("test-data/test-image5.png")
+wordSearchArray = translate("test-data/test-image6.png")
 #im = Image.open("test-image3.png")
 #wordSearchArray = pytesseract.image_to_string(im, lang = "eng") 
-wordBankArray = translate("test-data/test-bank4.png")
+wordBankArray = translate("test-data/test-bank6.png")
 
 wordSearch = toGrid(list(wordSearchArray))
 wordBank = toBank(list(wordBankArray))
@@ -360,10 +361,10 @@ print(wordBank)
 
 for i in range(0, len(wordSearch)):
     for j in range(0, len(wordSearch[i])):
-        letter = Label(text = wordSearch[i][j], font=("Ariel", 44)).grid(column = j, row = i)
+        letter = Label(text = wordSearch[i][j], font=("Ariel", 15)).grid(column = j, row = i)
 
 for q in range(0, len(highlight)):
-    highlightletter = Label(text = wordSearch[highlight[q][0]][highlight[q][1]], font=("Ariel", 44), fg = 'red').grid(column = highlight[q][1], row = highlight[q][0])
+    highlightletter = Label(text = wordSearch[highlight[q][0]][highlight[q][1]], font=("Ariel", 15), fg = 'red').grid(column = highlight[q][1], row = highlight[q][0])
 
 root.mainloop()
 
