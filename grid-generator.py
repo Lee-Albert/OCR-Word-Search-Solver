@@ -3,7 +3,7 @@ import string
 import sys
 
 orig_stdout = sys.stdout
-f = open('out.txt', 'w')
+f = open('wordsearch.txt', 'w')
 sys.stdout = f
 
 width = 10
@@ -25,10 +25,11 @@ def insert_word(word, grid):
     return grid
 
 grid = [[random.choice(string.uppercase) for i in range(0, 10)] for i in range(0, 10)]
-word_list = ['HELLO','TALON','CLOSE']
 
-for word in word_list:
+f = open('wordbank.txt')
+for word in f.read().split():
     grid = insert_word(word, grid)
+
 print "\n".join(map(lambda row: " ".join(row), grid))
 
 sys.stdout = orig_stdout
