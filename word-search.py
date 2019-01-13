@@ -355,13 +355,14 @@ for word in wordBank:
     checkFirst(wordSearch, word)
 
 print(highlight)
+print(wordSearch)
 
 for i in range(0, len(wordSearch)):
     for j in range(0, len(wordSearch[0])):
         letter = Label(text = wordSearch[i][j], font=("Ariel", 44)).grid(column = j, row = i)
 
 for q in range(0, len(highlight)):
-    highlightletter = Label(text = wordSearch[highlight[q][0]][highlight[q][1]], font=("Ariel", 44), fg = 'red').grid(column = highlight[q][0], row = highlight[q][1])
+    highlightletter = Label(text = wordSearch[highlight[q][0]][highlight[q][1]], font=("Ariel", 44), fg = 'red').grid(column = highlight[q][1], row = highlight[q][0])
 
 root.mainloop()
 
