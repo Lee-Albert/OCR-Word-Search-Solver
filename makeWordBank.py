@@ -1,5 +1,3 @@
-test = ['h','e','l','l','o','\n','w','o','r','l','d']
-
 def toBank(array):
     rowLength = array.index('\n')
     grid = []
@@ -17,5 +15,4 @@ def toBank(array):
         bank.append(''.join(word))
     
     return bank
-
-print(toBank(test))   
+  

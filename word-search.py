@@ -12,6 +12,38 @@ def translate(image):
 
     return text
 
+def toGrid(array):
+    rowLength = array.index('\n')
+    grid = []
+
+    grid.append(array[:rowLength])
+    array = array[rowLength:]
+
+    while array:
+        array = array[1:]
+        grid.append(array[:rowLength])
+        array = array[rowLength:]
+        
+    return grid
+
+def toBank(array):
+    rowLength = array.index('\n')
+    grid = []
+
+    grid.append(array[:rowLength])
+    array = array[rowLength:]
+
+    while array:
+        array = array[1:]
+        grid.append(array[:rowLength])
+        array = array[rowLength:]
+
+    bank = []
+    for word in grid:
+        bank.append(''.join(word))
+    
+    return bank
+  
 def checkFirst(grid, word):
     for i in range(0, len(grid)):
         for j in range(0, len(grid[0])):
@@ -26,56 +58,56 @@ def checkSecond(grid, word, pos):
         if grid[pos[0] - 1][pos[1]] == word[1] and directionSearch(grid, pos, "N", word):
             print(word, pos, "N")
         else:
-            continue
+            pass 
     except:
         pass
-     try:
+    try:
         if grid[pos[0] - 1][pos[1] + 1] == word[1] and directionSearch(grid, pos, "NE", word):
             print(word, pos, "NE")
         else:
-            continue
+            pass
     except:
         pass
-     try:
+    try:
         if grid[pos[0]][pos[1] + 1] == word[1] and directionSearch(grid, pos, "E", word):
             print(word, pos, "E")
         else:
-            continue
+            pass
     except:
         pass
-     try:
+    try:
         if grid[pos[0] + 1][pos[1] + 1] == word[1] and directionSearch(grid, pos, "SE", word):
             print(word, pos, "SE")
         else:
-            continue
+            pass
     except:
         pass
-     try:
+    try:
         if grid[pos[0] + 1][pos[1]] == word[1] and directionSearch(grid, pos, "S", word):
             print(word, pos, "S")
         else:
-            continue
+            pass
     except:
         pass
-     try:
+    try:
         if grid[pos[0] + 1][pos[1] - 1] == word[1] and directionSearch(grid, pos, "SW", word):
             print(word, pos, "SW")
         else:
-            continue
+            pass
     except:
         pass
-     try:
+    try:
         if grid[pos[0]][pos[1] - 1] == word[1] and directionSearch(grid, pos, "W", word):
             print(word, pos, "W")
         else:
-            continue
+            pass
     except:
         pass
-     try:
+    try:
         if grid[pos[0] - 1][pos[1] - 1] == word[1] and directionSearch(grid, pos, "NW", word):
             print(word, pos, "NW")
         else:
-            continue
+            pass
     except:
         pass
 
