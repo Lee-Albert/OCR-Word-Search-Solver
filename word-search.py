@@ -356,6 +356,7 @@ for word in wordBank:
 
 print(highlight)
 print(wordSearch)
+print(wordBank)
 
 for i in range(0, len(wordSearch)):
     for j in range(0, len(wordSearch[i])):
