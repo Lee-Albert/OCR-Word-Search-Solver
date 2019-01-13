@@ -343,10 +343,10 @@ def directionSearch(array, position, direction, word):
     elif direction == "NW":
         return nwDirection(array, position, word)
 
-wordSearchArray = translate("test-data/test-image2.png")
+wordSearchArray = translate("test-data/test-image5.png")
 #im = Image.open("test-image3.png")
 #wordSearchArray = pytesseract.image_to_string(im, lang = "eng") 
-wordBankArray = translate("test-data/test-bank2.png")
+wordBankArray = translate("test-data/test-bank4.png")
 
 wordSearch = toGrid(list(wordSearchArray))
 wordBank = toBank(list(wordBankArray))
