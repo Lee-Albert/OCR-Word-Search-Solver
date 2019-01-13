@@ -300,11 +300,14 @@ def directionSearch(array, position, direction, word):
 wordSearchArray = translate("test-image.png")
 wordBankArray = translate("test-bank.png")
 
-wordSearch = toGrid(list(wordBankArray))
+wordSearch = toGrid(list(wordSearchArray))
 wordBank = toBank(list(wordBankArray))
+
 
 for word in wordBank:
     checkFirst(wordSearch, word)
+
+
 
 
 
