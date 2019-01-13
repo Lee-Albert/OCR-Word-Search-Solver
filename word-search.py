@@ -15,8 +15,5 @@ def translate(image):
 wordsearch = translate("test1.png")
 array = list(wordsearch)
 
-<<<<<<< HEAD
-=======
 
 
->>>>>>> 92f5771a8fe269f979265b7426bed5859b4d0463
