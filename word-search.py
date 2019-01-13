@@ -274,24 +274,26 @@ def nwDirection(array, position, word):
                 return True
 
 def directionSearch(array, position, direction, word):
-    if direction == "n":
+    if direction == "N":
         return nDirection(array, position, word)
-    elif direction == "ne":
+    elif direction == "NE":
         return neDirection(array, position, word)
-    elif direction == "e":
+    elif direction == "E":
         return eDirection(array, position, word)
-    elif direction == "se":
+    elif direction == "SE":
         return seDirection(array, position, word)
-    elif direction == "s":
+    elif direction == "S":
         return sDirection(array, position, word)
-    elif direction == "sw":
+    elif direction == "SW":
         return swDirection(array, position, word)
-    elif direction == "w":
+    elif direction == "W":
         return wDirection(array, position, word)
-    elif direction == "nw":
+    elif direction == "NW":
         return nwDirection(array, position, word)
 
-wordsearch = translate("test1.png")
-print(wordsearch)
-array = list(wordsearch)
+wordsearch = translate("test-image.png")
+wordbank = translate("test-bank.png")
+
+print(toGrid(list(wordsearch)))
+print(toBank(list(wordbank)))
 
