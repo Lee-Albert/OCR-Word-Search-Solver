@@ -52,7 +52,28 @@ def toBank(array):
         bank.append(''.join(word))
 
     return bank
-  
+
+highlight = []
+
+def highlightpos(wordlen, pos, direction):
+    for i in range(0, wordlen):
+        if direction == 'N':
+            highlight.append([pos[0] - i, pos[1]])
+        elif direction == 'NE':
+            highlight.append([pos[0] - i, pos[1] + i])
+        elif direction == 'E':
+            highlight.append([pos[0], pos[1]+ i])
+        elif direction == 'SE':
+            highlight.append([pos[0] + i, pos[1] + i])
+        elif direction == 'S':
+            highlight.append([pos[0] + i, pos[1]])
+        elif direction == 'SW':
+            highlight.append([pos[0] + i, pos[1] -i])
+        elif direction == 'W':
+            highlight.append([pos[0], pos[1] - i])
+        elif direction == 'NW':
+            highlight.append([pos[0] - i, pos[1] - i])
+
 def checkFirst(grid, word):
     for i in range(0, len(grid)):
         for j in range(0, len(grid[0])):
@@ -71,6 +92,7 @@ def checkSecond(grid, word, pos):
     for i in range(0,1):
         try:
             if grid[pos[0] - 1][pos[1]] == word[1] and directionSearch(grid, pos, "N", word):
+                highlightpos(len(word), xy, "N")
                 print(word, xy, "N")
                 break 
             else:
@@ -79,6 +101,7 @@ def checkSecond(grid, word, pos):
             pass
         try:
             if grid[pos[0] - 1][pos[1] + 1] == word[1] and directionSearch(grid, pos, "NE", word):
+                highlightpos(len(word), xy, "NE")
                 print(word, xy, "NE")
                 break 
             else:
@@ -87,6 +110,7 @@ def checkSecond(grid, word, pos):
             pass
         try:
             if grid[pos[0]][pos[1] + 1] == word[1] and directionSearch(grid, pos, "E", word):
+                highlightpos(len(word), xy, "E")
                 print(word, xy, "E")
                 break
             else:
@@ -95,6 +119,7 @@ def checkSecond(grid, word, pos):
             pass
         try:
             if grid[pos[0] + 1][pos[1] + 1] == word[1] and directionSearch(grid, pos, "SE", word):
+                highlightpos(len(word), xy, "SE")
                 print(word, xy, "SE")
                 break
             else:
@@ -103,6 +128,7 @@ def checkSecond(grid, word, pos):
             pass
         try:
             if grid[pos[0] + 1][pos[1]] == word[1] and directionSearch(grid, pos, "S", word):
+                highlightpos(len(word), xy, "S")
                 print(word, xy, "S")
                 break
             else:
@@ -111,6 +137,7 @@ def checkSecond(grid, word, pos):
             pass
         try:
             if grid[pos[0] + 1][pos[1] - 1] == word[1] and directionSearch(grid, pos, "SW", word):
+                highlightpos(len(word), xy, "SW")
                 print(word, xy, "SW")
                 break
             else:
@@ -119,6 +146,7 @@ def checkSecond(grid, word, pos):
             pass
         try:
             if grid[pos[0]][pos[1] - 1] == word[1] and directionSearch(grid, pos, "W", word):
+                highlightpos(len(word), xy, "W")
                 print(word, xy, "W")
                 break
             else:
@@ -127,6 +155,7 @@ def checkSecond(grid, word, pos):
             pass
         try:
             if grid[pos[0] - 1][pos[1] - 1] == word[1] and directionSearch(grid, pos, "NW", word):
+                highlightpos(len(word), xy, "NW")
                 print(word, xy, "NW")
                 break
             else:
@@ -314,23 +343,25 @@ def directionSearch(array, position, direction, word):
     elif direction == "NW":
         return nwDirection(array, position, word)
 
-wordSearchArray = translate("test-data/test-image4.png")
+wordSearchArray = translate("test-data/test-image2.png")
 #im = Image.open("test-image3.png")
 #wordSearchArray = pytesseract.image_to_string(im, lang = "eng") 
-wordBankArray = translate("test-data/test-bank3.png")
+wordBankArray = translate("test-data/test-bank2.png")
 
 wordSearch = toGrid(list(wordSearchArray))
 wordBank = toBank(list(wordBankArray))
 
-
-highlight = []
-
 for word in wordBank:
     checkFirst(wordSearch, word)
+
+print(highlight)
 
 for i in range(0, len(wordSearch)):
     for j in range(0, len(wordSearch[0])):
         letter = Label(text = wordSearch[i][j], font=("Ariel", 44)).grid(column = j, row = i)
+
+for q in range(0, len(highlight)):
+    highlightletter = Label(text = wordSearch[highlight[q][0]][highlight[q][1]], font=("Ariel", 44), fg = 'red').grid(column = highlight[q][0], row = highlight[q][1])
 
 root.mainloop()
 
